@@ -1,0 +1,67 @@
+GIT COMMANDS — ASSIGNMENT_SDP_BITS-
+
+1. git init
+   Initializes a new Git repository in the current project folder.
+
+2. git status
+   Displays the current branch and working-tree changes.
+
+3. git add index.html about.html
+   Stages the website files for the next commit.
+
+4. git commit -m "Initial commit: add GameVault pages"
+   Saves the staged changes as a commit.
+
+5. git add index.html
+   Stages the modified home page.
+
+6. git commit -m "Update GameVault home page"
+   Records the home-page update in the project history.
+
+7. git switch -c feature/about-page
+   Creates and switches to the feature branch.
+
+8. git add about.html
+   Stages the new about page.
+
+9. git commit -m "Add GameVault about page"
+   Records the feature-page change.
+
+10. git switch main
+    Switches back to the main branch.
+
+11. git merge --no-ff feature/about-page -m "Merge about page feature"
+    Merges the feature branch and creates a visible merge commit.
+
+12. git log --oneline --graph --decorate --all
+    Displays the commit history and branch relationships.
+
+13. git add .gitignore
+    Stages the ignore configuration.
+
+14. git commit -m "Add Git ignore rules"
+    Saves the ignore rules in Git history.
+
+15. git add sample.log
+    Stages a temporary tracked log file for the demonstration (create it first).
+
+16. git commit -m "Add temporary log for revert demo"
+    Creates a commit that can be safely undone in the next step.
+
+17. git revert --no-edit HEAD
+    Creates a new commit that reverses the previous commit without rewriting history.
+
+18. git remote add origin https://github.com/hemanth174/Assignment_SDP_BITS-.git
+    Connects the local repository to the GitHub remote (run once).
+
+19. git push -u origin main
+    Pushes the main branch and sets its upstream.
+
+20. git push -u origin feature/about-page
+    Publishes the feature branch to GitHub.
+
+21. git switch feature/about-page
+    Checks out the feature branch before publishing or making further changes.
+
+22. git push
+    Pushes new commits to the configured upstream branch.
