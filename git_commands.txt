@@ -1,67 +1,122 @@
 GIT COMMANDS — ASSIGNMENT_SDP_BITS-
 
-1. git init
-   Initializes a new Git repository in the current project folder.
+Repository:
+https://github.com/hemanth174/Assignment_SDP_BITS-.git
 
-2. git status
-   Displays the current branch and working-tree changes.
+The GitHub repository and feature PR have already been created. Use these commands in PowerShell to work with the same repository locally.
 
-3. git add index.html about.html
-   Stages the website files for the next commit.
+A. Get the project locally
 
-4. git commit -m "Initial commit: add GameVault pages"
-   Saves the staged changes as a commit.
+1. git clone https://github.com/hemanth174/Assignment_SDP_BITS-.git
+   Downloads the GitHub repository and its commit history to your computer.
 
-5. git add index.html
+2. cd Assignment_SDP_BITS-
+   Moves into the cloned project folder.
+
+3. git status
+   Shows the current branch and whether the working tree has changes.
+
+4. git log --oneline --graph --decorate --all
+   Displays the available commits and branch history.
+
+B. Make and commit a main-branch update
+
+5. git switch main
+   Switches to the main branch.
+
+6. notepad index.html
+   Opens the home page so you can make a small visible text change and save it.
+
+7. git add index.html
    Stages the modified home page.
 
-6. git commit -m "Update GameVault home page"
-   Records the home-page update in the project history.
+8. git commit -m "Update GameVault home page"
+   Records the home-page update as a new commit.
 
-7. git switch -c feature/about-page
-   Creates and switches to the feature branch.
+C. Get the feature branch and inspect it
 
-8. git add about.html
-   Stages the new about page.
+9. git fetch origin
+   Downloads the latest branch and commit information from GitHub.
 
-9. git commit -m "Add GameVault about page"
-   Records the feature-page change.
+10. git switch --track origin/feature/about-page
+    Creates a local tracking branch for the feature branch already published on GitHub.
 
-10. git switch main
-    Switches back to the main branch.
+11. git log --oneline --graph --decorate --all
+    Confirms the feature branch and its commits are visible in the local history.
 
-11. git merge --no-ff feature/about-page -m "Merge about page feature"
+D. Merge the feature locally (alternative to merging the PR)
+
+12. git switch main
+    Returns to the main branch before merging.
+
+13. git merge --no-ff feature/about-page -m "Merge about page feature"
     Merges the feature branch and creates a visible merge commit.
 
-12. git log --oneline --graph --decorate --all
-    Displays the commit history and branch relationships.
+14. git log --oneline --graph --decorate --all
+    Shows the merge commit and branch history.
 
-13. git add .gitignore
-    Stages the ignore configuration.
+15. git push origin main
+    Publishes the local main-branch commits to GitHub.
 
-14. git commit -m "Add Git ignore rules"
-    Saves the ignore rules in Git history.
+Note: If you merge Pull Request #1 on GitHub instead, do not also perform step 13. After merging the PR, run:
+    git switch main
+    git pull origin main
 
-15. git add sample.log
-    Stages a temporary tracked log file for the demonstration (create it first).
+E. Verify .gitignore
 
-16. git commit -m "Add temporary log for revert demo"
-    Creates a commit that can be safely undone in the next step.
+16. notepad .gitignore
+    Opens the ignore file. It should contain *.log and /temp/.
 
-17. git revert --no-edit HEAD
-    Creates a new commit that reverses the previous commit without rewriting history.
+17. New-Item -ItemType File -Name "check.log"
+    Creates a sample log file in PowerShell.
 
-18. git remote add origin https://github.com/hemanth174/Assignment_SDP_BITS-.git
-    Connects the local repository to the GitHub remote (run once).
+18. New-Item -ItemType Directory -Name "temp"
+    Creates the temporary directory listed in .gitignore.
 
-19. git push -u origin main
-    Pushes the main branch and sets its upstream.
+19. git status --short
+    Checks that check.log and files inside temp are not shown as untracked files.
 
-20. git push -u origin feature/about-page
-    Publishes the feature branch to GitHub.
+F. Demonstrate undoing a commit safely
 
-21. git switch feature/about-page
-    Checks out the feature branch before publishing or making further changes.
+20. Set-Content -Path "revert-demo.txt" -Value "Temporary commit for revert demonstration"
+    Creates a small file for the undo demonstration.
 
-22. git push
-    Pushes new commits to the configured upstream branch.
+21. git add revert-demo.txt
+    Stages the demonstration file.
+
+22. git commit -m "Add temporary revert demonstration file"
+    Creates the extra commit that will be undone.
+
+23. git revert --no-edit HEAD
+    Creates a new commit that reverses the previous commit without deleting history.
+
+24. git log --oneline -5
+    Confirms that both the original commit and the revert commit remain in history.
+
+G. Push your work
+
+25. git push -u origin main
+    Pushes the main branch and configures its upstream branch.
+
+26. git push -u origin feature/about-page
+    Pushes the feature branch and configures its upstream branch.
+
+27. git push
+    Pushes later commits to the configured upstream branch.
+
+H. Pull Request workflow
+
+28. Open https://github.com/hemanth174/Assignment_SDP_BITS-/pull/1
+    Opens Pull Request #1, which proposes merging feature/about-page into main.
+
+29. Review the changed files and PR description on GitHub.
+    Checks the feature changes before merging.
+
+30. Click "Merge pull request" on GitHub only after reviewing the PR.
+    Completes the reviewed feature merge and records the merge on GitHub.
+
+31. git switch main
+    Returns to the local main branch after the PR is merged.
+
+32. git pull origin main
+    Downloads the merged main-branch history to your computer.
